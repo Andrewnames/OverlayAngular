@@ -37,7 +37,7 @@
   text-align: left;
   margin-left: 34px;
   width: 633px;
-  height: 700x;
+  height: 700px;
 
   background-color: #f1f4f6;
 }
@@ -51,5 +51,6 @@
 .grid-parent {
   display: grid;
   text-align: center;
+  height: 700px;
   grid-template-columns: 1fr 1fr
 }
