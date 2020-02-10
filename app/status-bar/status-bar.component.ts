@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { app } from 'electron';
 @Component({
   selector: 'app-status-bar',
   templateUrl: './status-bar.component.html',
