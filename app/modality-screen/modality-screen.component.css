@@ -1,0 +1,23 @@
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: white;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-outline {
+  color: black;
+}
+
+.rowWrapper{
+  background-color: #eceff4;
+  height: 65px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 5em;
+  font-size: 15px;
+ font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+
+  letter-spacing: normal;
+  color: #4a4a4a;
+
+}

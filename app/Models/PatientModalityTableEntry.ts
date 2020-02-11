@@ -1,5 +1,5 @@
 export interface PatientModalityTableEntry {
-  IsHavingAlerts: boolean;
+  IsHavingAlerts?: boolean;
   PatientName: string;
   PatientBirthDate: string;
   PatientID: string;
