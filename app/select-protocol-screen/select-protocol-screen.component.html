@@ -1,25 +1,29 @@
 <div style="height: 700px;">
   <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div>
-          <span>
-          <mat-icon svgIcon="patient-icon" style="margin-top: 20px ;width: 30px; height: 30px;"></mat-icon>
-          <h5  style="
-          color:#7797ae;
-          font-weight: bold;
-          font-size: 16px;
-          ">{{SelectedPatient.PatientName}}</h5> <h6 style="
-          color:#7797ae;
-          font-size: 16px;
-          ">#{{SelectedPatient.PatientID}}</h6>
-          </span>
-        </div>
+    <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
+      <mat-panel-title style="height: 65px;
+      ">
+        <mat-icon svgIcon="patient-icon" style="margin-top: 10px ;
+       margin-left: 15px;
+       margin-right: 20px;
+       width: 40px;
+       height: 40px;"></mat-icon>
+        <p style=" width: 1366px; height: 65px;  font-size: 20px;color: #7797ae; margin-top: 20px;">
+
+          <span style="font-weight: bold;">{{SelectedPatient.PatientName}}</span> Patient #{{SelectedPatient.PatientID}} {{SelectedPatient.PatientGender}} |
+          {{SelectedPatient.PatientAge}}
+        </p>
+
+
+
+
+
+
+
+
+
 
       </mat-panel-title>
-      <mat-panel-description>
-        Type your name and age
-      </mat-panel-description>
     </mat-expansion-panel-header>
 
     <mat-form-field>

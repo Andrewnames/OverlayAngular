@@ -19,6 +19,8 @@ const PATIENT_DATA: PatientModalityTableEntry[] = [
     PatientStudyDateTime: faker.date.past(),
     PatientStudyDescription: faker.hacker.phrase(),
     PatientBirthDate: faker.date.past(),
+    PatientAge: 0,
+    PatientGender: '  '
   }
 ];
 @Component({
@@ -41,10 +43,20 @@ export class ModalityScreenComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: row
     };
-
     this.router.navigate(['select-protocol-screen'], navigationExtras);
+
     console.log('navigate to protocol selection');
     console.log(navigationExtras);
+  }
+  calcAge(birthday: Date): number {
+    let utcDate = new Date().getTime();  // ISO-8601 formatted date returned from server
+    console.log(utcDate + 'is utc date');
+    let today = new Date(utcDate);
+    console.log(today + 'is   today');
+    let age: number = today.getFullYear() - birthday.getFullYear();
+    if (new Date(birthday.getFullYear() + age) > today) { age--; }
+    console.log(age + 'is age  ');
+    return age;
   }
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router) {
 
@@ -53,8 +65,14 @@ export class ModalityScreenComponent implements OnInit {
       'info-circle',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/info.svg'));
 
+
     console.log(PATIENT_DATA);
+    let genders = ['female', 'male'];
+
     for (let index = 0; index < 15; index++) {
+      let gender = faker.random.arrayElement(genders);
+      let birthday = faker.date.past(faker.random.number(40));
+      let age = this.calcAge(birthday);
       PATIENT_DATA.push(
         {
           IsHavingAlerts: faker.random.boolean(),
@@ -63,7 +81,9 @@ export class ModalityScreenComponent implements OnInit {
           PatientID: faker.random.number(9),
           PatientStudyDateTime: faker.date.past(faker.random.number(4)),
           PatientStudyDescription: faker.hacker.phrase(),
-          PatientBirthDate: faker.date.past(faker.random.number(40)),
+          PatientBirthDate: birthday,
+          PatientAge: age,
+          PatientGender: gender
         }
       );
     }

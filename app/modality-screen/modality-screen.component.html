@@ -183,8 +183,8 @@ color: #41505b;
         "> <div class="farRightRowWrapper"><div style="height: 50px;">{{patient.PatientStudyDescription}}</div></div>  </td>
       </mat-text-column>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tableRow" 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" style="margin-bottom: 10px;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tableRow"
     (click)="navigateToEdit(row)"
    ></tr>
     </table>

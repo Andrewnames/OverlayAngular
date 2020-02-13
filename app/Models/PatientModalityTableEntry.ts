@@ -6,4 +6,7 @@ export interface PatientModalityTableEntry {
   PatientStudyDateTime: Date;
   PatientAccessionNumber: string;
   PatientStudyDescription: string;
+  PatientAge: number;
+  PatientGender: string;
+
 }
