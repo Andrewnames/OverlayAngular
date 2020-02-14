@@ -11,9 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class StartupScreenComponent implements OnInit {
 
   constructor(iconRegistry: MatIconRegistry,
-              sanitizer: DomSanitizer,
-              private route: ActivatedRoute,
-              private router: Router) {
+    sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    private router: Router) {
     iconRegistry.addSvgIcon(
       'info-leaf',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/infoLeaf.svg'));
@@ -21,7 +21,9 @@ export class StartupScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
+
 
   navigateToPwl() {
     this.router.navigate(['modality-worklist']);

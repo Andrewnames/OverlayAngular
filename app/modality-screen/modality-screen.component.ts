@@ -5,12 +5,13 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { DataServiceService } from '../DataService.service';
 import * as faker from 'faker';
 
 const initialSelection = [];
 const allowMultiSelect = false;
 
-const PATIENT_DATA: PatientModalityTableEntry[] = [
+const PATIENT_DATA: PatientModalityTableEntry[] = [/*
   {
     IsHavingAlerts: false,
     PatientAccessionNumber: faker.random.number(9),
@@ -21,7 +22,7 @@ const PATIENT_DATA: PatientModalityTableEntry[] = [
     PatientBirthDate: faker.date.past(),
     PatientAge: 0,
     PatientGender: '  '
-  }
+  }*/
 ];
 @Component({
   selector: 'app-modality-screen',
@@ -44,7 +45,7 @@ export class ModalityScreenComponent implements OnInit {
       queryParams: row
     };
     this.router.navigate(['select-protocol-screen'], navigationExtras);
-
+    this.dataService.changeMessage('select screen');// TODO send message to status bar
     console.log('navigate to protocol selection');
     console.log(navigationExtras);
   }
@@ -58,7 +59,10 @@ export class ModalityScreenComponent implements OnInit {
     console.log(age + 'is age  ');
     return age;
   }
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router) {
+  constructor(iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private router: Router,
+    private dataService: DataServiceService) {
 
 
     iconRegistry.addSvgIcon(
@@ -90,6 +94,10 @@ export class ModalityScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(message => this.processMessage(message));
+  }
+  processMessage(message: string): void {
+    console.log(message);
   }
 
 
