@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PatientModalityTableEntry } from '../Models/PatientModalityTableEntry';
+import { DataServiceService } from '../DataService.service';
 
 
 @Component({
@@ -14,11 +15,14 @@ import { PatientModalityTableEntry } from '../Models/PatientModalityTableEntry';
 export class SelectProtocolScreenComponent implements OnInit {
   SelectedPatient: PatientModalityTableEntry;
 
-  constructor(private router: Router, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(private router: Router, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataServiceService) {
 
     iconRegistry.addSvgIcon(
       'patient-icon',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/patient.svg'));
+    iconRegistry.addSvgIcon(
+      'alert-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/alert.svg'));
 
 
     const navigaion = this.router.getCurrentNavigation();
@@ -30,7 +34,10 @@ export class SelectProtocolScreenComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.dataService.currentMessage.subscribe(message => this.processMessage(message));
+  }
+  processMessage(message: string): void {
+     
   }
 
 }

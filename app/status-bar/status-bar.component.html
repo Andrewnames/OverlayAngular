@@ -1,14 +1,39 @@
 <div style=
-
-"width: 1366px;
+"display: grid;
+grid-template-columns: 250px 250px 250px 1fr;
+width: 1366px;
 height: 68px;
 text-align: right;
 background-color: #7797ae;">
 
+<!-- pwl label -->
+<label *ngIf="IsPwlLabelVisible" style="
+grid-column: 1;
+height: 27px;
+font-size: 22px;
+font-weight: bold;
+line-height: 3em;
+text-align: right;
+color: rgb(255, 255, 255);
+letter-spacing: 1.5px;">Patient worklist</label>
+
+
+<mat-tab-group headerPosition="below" style="grid-row: 1; -ms-grid-row-span: 3;">
+  <mat-tab label="1. Select Injection Protocol ">  </mat-tab>
+  <mat-tab label="2. Add Patient data">  </mat-tab>
+  <mat-tab label="3. Review Injection">   </mat-tab>
+</mat-tab-group>
+
+<!-- learning mode and exit -->
+<div style=
+"grid-column: 4;
+text-align: right;
+background-color: #7797ae;">
+
 <label style="width: 87px;
+
 height: 11px;
 margin-right: 10px;
-font-family: AvenirNext;
 color: rgb(255, 255, 255);
 font-size: 20px;
 font-weight: 500;
@@ -85,5 +110,6 @@ letter-spacing: -0.02px;
 text-align: center;
 color:white
 ">Exit</button>
+</div>
 
 </div>

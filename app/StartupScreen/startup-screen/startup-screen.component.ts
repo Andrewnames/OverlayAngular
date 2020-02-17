@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DataServiceService } from '../../DataService.service';
 
 @Component({
   selector: 'app-startup-screen',
@@ -11,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class StartupScreenComponent implements OnInit {
 
   constructor(iconRegistry: MatIconRegistry,
+    private dataService: DataServiceService,
     sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private router: Router) {
@@ -21,13 +23,15 @@ export class StartupScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    //this.dataService.currentMessage.subscribe(message => this.processMessage(message));
   }
+
 
 
   navigateToPwl() {
     this.router.navigate(['modality-worklist']);
     console.log('navigate to pwl');
+    this.dataService.changeMessage('modality screen'); // TODO send message to status bar
   }
 
 }

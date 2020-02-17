@@ -10,6 +10,9 @@ import { DataServiceService } from '../DataService.service';
 export class StatusBarComponent implements OnInit {
 
   IsSettingAndMaintenanceVisible = true;
+  IsPwlLabelVisible = false;
+  IsSelectScreen = false;
+
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataServiceService) {
     iconRegistry.addSvgIcon(
@@ -34,6 +37,13 @@ export class StatusBarComponent implements OnInit {
       case 'select screen':
         console.log('hide setting button');
         this.IsSettingAndMaintenanceVisible = false;
+        this.IsPwlLabelVisible = false;
+        this.IsSelectScreen = true;
+        break;
+      case 'modality screen':
+        console.log('hide setting button and show modality worklist label');
+        this.IsSettingAndMaintenanceVisible = false;
+        this.IsPwlLabelVisible = true;
         break;
       default:
         break;

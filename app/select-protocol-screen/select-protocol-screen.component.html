@@ -1,6 +1,6 @@
 <div style="height: 700px;">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
+  <mat-expansion-panel class="mat-elevation-z6">
+    <mat-expansion-panel-header  [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
       <mat-panel-title style="height: 65px;
       ">
         <mat-icon svgIcon="patient-icon" style="margin-top: 10px ;
@@ -12,7 +12,7 @@
 
           <span style="font-weight: bold;">{{SelectedPatient.PatientName}}</span> Patient #{{SelectedPatient.PatientID}}
           {{SelectedPatient.PatientGender}} |
-          {{SelectedPatient.PatientAge}}
+          {{SelectedPatient.PatientAge}} years
         </p>
 
 
@@ -86,28 +86,79 @@ color: #4a4a4a;
 color: #4a4a4a;
 grid-column: 2;
 grid-row: 3;
+text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 ">{{SelectedPatient.PatientStudyDescription}}</span>
       </div>
       <mat-divider [vertical]="true" style="grid-column: 2;
 
-      border-right-width: 2px;
+      border-right-width: 1px;
       border-color:#41505b;
-      margin: 20px;
+      margin: 10px;
       "></mat-divider>
       <div style="grid-column: 3;
        width: 400px;
                ">
-        row two
+
+        <div class="alert" style="
+       grid-column: 2;
+       display: grid;
+       border-radius: 2px;
+       background-color: #f1f4f6;">
+          <div style="
+          grid-row: 1;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          ">
+            <mat-icon svgIcon="alert-icon" style="
+            margin-top: 10px;
+            grid-column:1 ;
+          margin-top: 20px ;
+        margin-left: 15px;
+        margin-right: 20px;
+        width: 20px;
+        height: 20px;"></mat-icon>
+            <span style="grid-column: 2; text-align: right; width: 42px;
+            height: 20px;
+            font-weight: bold;
+        font-size: 15px;
+            font-stretch: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            margin-top: 20px;
+            color: #4a4a4a;">Alerts</span>
+          </div>
+        </div>
+
       </div>
       <mat-divider [vertical]="true" style="grid-column: 4;
-      border-right-width: 2px;
+      border-right-width: 1px;
       border-color:#41505b;
-       margin: 20px;
+       margin: 10px;
       "></mat-divider>
       <div style="grid-column: 5;
        width: 400px;
                ">
-        row three
+        <div style="display: inline;
+
+       grid-template-columns: 1fr 1fr;
+       grid-template-rows: auto auto auto auto ;
+       "></div>
+        <span style="grid-column: 1;
+        -ms-grid-column-span: 2;
+  text-align: right;
+  width: 42px;
+ height: 20px;
+ font-weight: bold;
+font-size: 15px;
+ font-stretch: normal;
+ font-style: normal;
+ line-height: 2.5em;
+ letter-spacing: normal;
+ margin-top: 20px;
+ margin-left: 40px;
+ color: #4a4a4a;">Important Notes</span>
       </div>
 
     </div>

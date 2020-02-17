@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { StartupScreenComponent } from './StartupScreen/startup-screen/startup-screen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'; // material design imports
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
@@ -34,6 +36,8 @@ import { DataServiceService } from './DataService.service';
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatButtonToggleModule,
+    MatTabsModule,
     MatIconModule,
     MatDividerModule,
     MatFormFieldModule,
