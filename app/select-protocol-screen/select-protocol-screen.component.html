@@ -1,6 +1,9 @@
-<div style="height: 700px;">
+<div style="height: 700px;
+
+">
+  <!-- panel info header -->
   <mat-expansion-panel class="mat-elevation-z6">
-    <mat-expansion-panel-header  [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
+    <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
       <mat-panel-title style="height: 65px;
       ">
         <mat-icon svgIcon="patient-icon" style="margin-top: 10px ;
@@ -163,4 +166,81 @@ font-size: 15px;
 
     </div>
   </mat-expansion-panel>
+
+  <div style="
+  display: grid;
+  height: 630px;
+   z-index: -1;
+
+  grid-template-columns: 950px 420px;
+  ">
+
+
+
+    <!-- select protocol label -->
+
+    <label style="width: 547px;
+    grid-column: 1;
+    grid-row: 1;
+      height: 50px;
+      margin-top: 25px;
+      margin-left:35px ;
+      font-size: 32px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      color: #465b6b;">Select Injection Protocol</label>
+
+    <!-- priors and availables -->
+    <div style="display: grid;
+      grid-column: 1;
+      grid-row: 1;
+      margin-top: 75px;
+      margin-left: 35px;
+      grid-template-columns: 370px 580px;
+      ">
+      <!-- priors -->
+      <div style="grid-column: 1;
+      width: 141px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.78;
+  letter-spacing: 0.23px;
+  color: #465b6b;
+      ">
+        <label> Patient Priors {{priorProtocolsNumber}}</label>
+        scroller here
+      </div>
+
+      <!-- availables -->
+      <div style="grid-column: 2;
+       width: 352px;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.78;
+        letter-spacing: 0.23px;
+        color: #465b6b;
+      ">
+        <label> Patient Priors {{availableProtocolsNumber}}</label>
+        scroller here
+      </div>
+
+    </div>
+
+    <!-- preview panel -->
+    <div style="grid-column: 2;
+      background-color:
+      #eceff4;
+      z-index: -1;
+      "> </div>
+  </div>
+
+
+
 </div>

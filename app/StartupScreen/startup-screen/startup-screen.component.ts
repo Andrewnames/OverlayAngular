@@ -23,7 +23,7 @@ export class StartupScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.dataService.currentMessage.subscribe(message => this.processMessage(message));
+    // this.dataService.currentMessage.subscribe(message => this.processMessage(message));
   }
 
 

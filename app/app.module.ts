@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
 import { HttpClientModule } from '@angular/common/http';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { ModalityScreenComponent } from './modality-screen/modality-screen.component';
@@ -35,6 +38,7 @@ import { DataServiceService } from './DataService.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgScrollbarModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatTabsModule,

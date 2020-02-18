@@ -1,0 +1,17 @@
+.mat-button-toggle {
+  background-color: #7797ae;
+  color: white;
+  font-size: 18px;
+  line-height: 3.6em;
+  font-weight: 500;
+  width: 250px;
+}
+
+.mat-button-toggle-checked {
+  font-size: 18px;
+  line-height: 3.6em;
+  font-weight: 500;
+  width: 250px;
+  color: white;
+  background-color: #465b6b;
+}
