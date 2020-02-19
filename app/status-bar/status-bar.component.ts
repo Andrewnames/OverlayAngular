@@ -8,7 +8,7 @@ import { DataServiceService } from '../DataService.service';
   styleUrls: ['./status-bar.component.css']
 })
 export class StatusBarComponent implements OnInit {
-
+  SelectInjectionButtonActive = true;
   IsSettingAndMaintenanceVisible = true;
   IsPwlLabelVisible = false;
   IsSelectScreen = false;
@@ -39,6 +39,7 @@ export class StatusBarComponent implements OnInit {
         this.IsSettingAndMaintenanceVisible = false;
         this.IsPwlLabelVisible = false;
         this.IsSelectScreen = true;
+
         break;
       case 'modality screen':
         console.log('hide setting button and show modality worklist label');
