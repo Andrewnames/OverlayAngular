@@ -171,7 +171,6 @@ font-size: 15px;
   display: grid;
   height: 630px;
    z-index: -1;
-
   grid-template-columns: 950px 420px;
   ">
 
@@ -191,14 +190,15 @@ font-size: 15px;
       font-style: normal;
       color: #465b6b;">Select Injection Protocol</label>
 
+
     <!-- priors and availables main grid-->
     <div style="display: grid;
       grid-column: 1;
-      grid-column-gap: 10px;
+
       grid-row: 1;
       margin-top: 75px;
       margin-left: 35px;
-      grid-template-columns: 370px 580px;
+      grid-template-columns: 300px 500px;
       ">
       <!-- priors -->
       <div style="grid-column: 1;
@@ -212,51 +212,48 @@ font-size: 15px;
   letter-spacing: 0.23px;
   color: #465b6b;
       ">
-        <label> Patient Priors </label>
-        <mat-divider style="width: 300px;
+        <label> Patient Priors ({{NumberOfPriors}})</label>
+        <mat-divider style="width: 280px;
         border-right-width: 1px;
-        border-color:#465b6b;
+        border-color:#7797ae;
         margin-bottom: 5px;"></mat-divider>
-        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar">
-          <div **ngFor="let priorProtocol of priorProtocol" style="
-        display: grid;
+        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="max-height: 500px;">
 
+          <div *ngFor="let priorProtocol of PatientPriorsList" style="
+          display: grid;
+
+        width: 28px;
+        height: 100px;
         ">
 
-      {{priorProtocol.PatientStudyDescription}}
-      </div>
-          <mat-divider style="width: 300px;
-                border-right-width: 1px;
-                border-color:#465b6b;
-                margin-top: 5px;"></mat-divider>
+            {{priorProtocol.studyName}}
+            <mat-divider style="width: 280px;
+        border-right-width: 1px;
+        border-color:#7797ae;
+        margin-top: 5px;"></mat-divider>
+          </div>
+
         </ng-scrollbar>
 
       </div>
 
       <!-- availables -->
-      <div style="grid-column: 2;
-       justify-self: stretch;
-        height: 500px;
-        font-size: 18px;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 2.78;
-        letter-spacing: 0.23px;
-        color: #465b6b;
-      ">
-        <label> All available </label>
+      <div class="availablesList" >
+        <label> All available ({{NumberOfTemplates}}) </label>
         <mat-divider style="
         width: 500px;
               border-right-width: 1px;
-              border-color:#465b6b;
+              border-color:#7797ae;
               margin-bottom: 5px;
               "></mat-divider>
-        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar">
-
-          <mat-expansion-panel class="mat-elevation-z1" style="width:500px">
-            <mat-expansion-panel-header [collapsedHeight]="'60px'" style=" height: auto; ">
-              <mat-panel-title style="width: 179px;
+        <ng-scrollbar  #scrollable track="all" pointerEventsMethod="scrollbar" style="
+        max-width: 520px;
+        max-height: 495px;
+        width: 520px;">
+          <div *ngFor="let protocol of ProtocolTemplatesList">
+            <mat-expansion-panel class="mat-elevation-z0" style="width:500px">
+              <mat-expansion-panel-header [collapsedHeight]="'60px'" style=" height: auto; ">
+                <mat-panel-title style="width: 179px;
               height: 50px;
               font-size: 22px;
               font-weight: 500;
@@ -265,17 +262,19 @@ font-size: 15px;
               line-height: 2.27;
               letter-spacing: 0.28px;
               color: #7797ae;">
-                title
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            body
-          </mat-expansion-panel>
-          <mat-divider style="
+                  {{protocol.name}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              body
+
+            </mat-expansion-panel>
+            <mat-divider style="
           width: 500px;
                 border-right-width: 1px;
-                border-color:#465b6b;
+                border-color:#7797ae;
                 margin-top: 5px;
                 "></mat-divider>
+          </div>
         </ng-scrollbar>
 
       </div>

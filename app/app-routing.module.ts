@@ -8,9 +8,9 @@ import { SelectProtocolScreenComponent } from './select-protocol-screen/select-p
 
 const routes: Routes = [
   { path: '', redirectTo: 'startup-screen', pathMatch: 'full' },
-  { path: 'startup-screen', component: StartupScreenComponent },
-  { path: 'modality-worklist', component: ModalityScreenComponent },
-  { path: 'select-protocol-screen', component: SelectProtocolScreenComponent },
+  { path: 'startup-screen', component: StartupScreenComponent, data: { state: 'startup-screen' } },
+  { path: 'modality-worklist', component: ModalityScreenComponent, data: { state: 'modality-worklist' } },
+  { path: 'select-protocol-screen', component: SelectProtocolScreenComponent, data: { state: 'select-protocol-screen' } },
 
   // {path: '**', component: PageNotFoundComponent}
 ];
@@ -19,3 +19,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const AppRouting = RouterModule.forRoot(routes, {
+  useHash: true
+});

@@ -1,39 +1,96 @@
-import {
-  trigger, animateChild, group,
-  transition, animate, style, query
-} from '@angular/animations';
+import { trigger, animateChild, group, transition, animate, style, query} from '@angular/animations';
 
 
-// Routable animations
 export const slideInAnimation =
-  trigger('routeAnimation', [
-    transition('heroes <=> hero', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%'
-        })
-      ]),
-      query(':enter', [
-        style({ left: '-100%'})
-      ]),
-      query(':leave', animateChild()),
-      group([
-        query(':leave', [
-          animate('300ms ease-out', style({ left: '100%'}))
-        ]),
-        query(':enter', [
-          animate('300ms ease-out', style({ left: '0%'}))
+trigger('routeAnimations', [
+    transition('Contact => *', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' }), { optional: true }),
+        group([
+            query(':enter', [
+                style({ transform: 'translateX(-100%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+            ], { optional: true }),
+            query(':leave', [
+                style({ transform: 'translateX(0%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(100%)' }))
+            ], { optional: true }),
         ])
-      ]),
-      query(':enter', animateChild()),
-    ])
-  ]);
+    ]),
+    transition('Home => *', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' }), { optional: true }),
+        group([
+            query(':enter', [
+                style({ transform: 'translateX(100%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+            ], { optional: true }),
+            query(':leave', [
+                style({ transform: 'translateX(0%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
+            ], { optional: true }),
+        ])
+    ]),
+    transition('About => Contact', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' }), { optional: true }),
+        group([
+            query(':enter', [
+                style({ transform: 'translateX(100%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+            ], { optional: true }),
+            query(':leave', [
+                style({ transform: 'translateX(0%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
+            ], { optional: true }),
+        ])
+    ]),
+    transition('About => Home', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' }), { optional: true }),
+        group([
+            query(':enter', [
+                style({ transform: 'translateX(-100%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+            ], { optional: true }),
+            query(':leave', [
+                style({ transform: 'translateX(0%)' }),
+                animate('0.5s ease-in-out', style({ transform: 'translateX(100%)' }))
+            ], { optional: true }),
+        ])
+    ]),
+]);
 
 
+
+export const fadeAnimation =
+
+trigger('fadeAnimation', [
+
+  transition( '* => *', [
+
+      query(':enter',
+          [
+              style({ opacity: 0 })
+          ],
+          { optional: true }
+      ),
+
+      query(':leave',
+          [
+              style({ opacity: 1 }),
+              animate('0.5s', style({ opacity: 0 }))
+          ],
+          { optional: true }
+      ),
+
+      query(':enter',
+          [
+              style({ opacity: 0 }),
+              animate('0.5s', style({ opacity: 1 }))
+          ],
+          { optional: true }
+      )
+
+  ])
+
+]);
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

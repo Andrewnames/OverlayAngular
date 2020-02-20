@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartupScreenComponent } from './StartupScreen/startup-screen/startup-screen.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatButtonModule } from '@angular/material/button'; // material design imports
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
@@ -24,6 +26,7 @@ import { SelectProtocolScreenComponent } from './select-protocol-screen/select-p
 import { DataServiceService } from './DataService.service';
 
 
+import { AppRouting } from './app-routing.module';
 
 
 
@@ -50,7 +53,8 @@ import { DataServiceService } from './DataService.service';
     MatSlideToggleModule,
     MatExpansionModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppRouting
   ],
   providers: [DataServiceService], // here services go to register
   bootstrap: [
@@ -59,7 +63,9 @@ import { DataServiceService } from './DataService.service';
 })
 export class AppModule {
 
-
+  getState(outlet) {
+    return outlet.activatedRouteData.state;
+  }
 
 
 

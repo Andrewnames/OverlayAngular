@@ -7,10 +7,9 @@ import { PatientModalityTableEntry } from '../Models/PatientModalityTableEntry';
 import { DataServiceService } from '../DataService.service';
 import { BasicProtocolPlan } from '../Models/BasicProtocolPlan';
 import { ArchivedProtocol } from '../Models/ArchivedProtocol';
+import * as faker from 'faker';
 
-let SelectedPatient: PatientModalityTableEntry;
-let ProtocolTemplatesList: BasicProtocolPlan[];
-let PatientPriorsList: ArchivedProtocol[];
+
 
 @Component({
   selector: 'app-select-protocol-screen',
@@ -20,8 +19,11 @@ let PatientPriorsList: ArchivedProtocol[];
 export class SelectProtocolScreenComponent implements OnInit {
 
 
-  NumberOfTemplates: 10; // TODO: these gonna come from  the service
-  NumberOfPriors: 10;
+  NumberOfTemplates: number = 10; // TODO: these gonna come from  the service
+  NumberOfPriors: number = 10;
+  SelectedPatient: PatientModalityTableEntry;
+  ProtocolTemplatesList: BasicProtocolPlan[];
+  PatientPriorsList: ArchivedProtocol[];
 
   constructor(private router: Router, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataServiceService) {
 
@@ -37,17 +39,30 @@ export class SelectProtocolScreenComponent implements OnInit {
     const patient = navigaion.extras.queryParams as PatientModalityTableEntry;
     console.log('caught on  selection screen');
     console.log(patient);
-    SelectedPatient = patient;
+    this.SelectedPatient = patient;
   }
 
   ngOnInit() {
 
     this.dataService.currentMessage.subscribe(message => this.processMessage(message));
-    // this.PatientPriorsList = new ArchivedProtocol();
-    // for (let index = 0; index < 10; index++) {
-    //   PatientPriorsList
 
-    // }
+    this.ProtocolTemplatesList = [];
+    this.PatientPriorsList = [];
+    for (let index = 0; index < 10; index++) {
+
+
+      let newPlan = new BasicProtocolPlan();
+      newPlan.name = faker.hacker.noun();
+      this.ProtocolTemplatesList.push(
+        newPlan
+      );
+
+      let newPrior = new ArchivedProtocol();
+      newPrior.studyName = faker.hacker.noun();
+      this.PatientPriorsList.push(newPrior);
+
+    }
+    console.log(this.PatientPriorsList);
 
   }
   processMessage(message: string): void {
