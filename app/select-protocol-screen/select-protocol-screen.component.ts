@@ -59,7 +59,12 @@ export class SelectProtocolScreenComponent implements OnInit {
 
       let newPrior = new ArchivedProtocol();
       newPrior.studyName = faker.hacker.noun();
+      newPrior.kvp = faker.random.number();
+      newPrior.studyDate = faker.date.past(faker.random.number(4));
+      newPrior.weight = faker.random.number(100);
+      newPrior.studyDescription =faker.hacker.phrase();
       this.PatientPriorsList.push(newPrior);
+
 
     }
     console.log(this.PatientPriorsList);

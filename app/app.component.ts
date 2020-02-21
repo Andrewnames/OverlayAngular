@@ -15,7 +15,7 @@ export class AppComponent {
 
   prepareRoute(outlet: RouterOutlet) {
     let animationstate = outlet.isActivated ? outlet.activatedRoute : '';
-    console.log('outlet state is ' + animationstate);
+   // console.log('outlet state is ' + animationstate);
     return animationstate;
   }
 

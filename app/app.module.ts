@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { StartupScreenComponent } from './StartupScreen/startup-screen/startup-screen.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button'; // material design imports
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import {MatRadioModule} from '@angular/material/radio';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +44,8 @@ import { AppRouting } from './app-routing.module';
     NgScrollbarModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatRadioModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatIconModule,
     MatDividerModule,

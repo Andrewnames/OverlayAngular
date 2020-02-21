@@ -170,7 +170,7 @@ font-size: 15px;
   <div style="
   display: grid;
   height: 630px;
-   z-index: -1;
+
   grid-template-columns: 950px 420px;
   ">
 
@@ -194,8 +194,8 @@ font-size: 15px;
     <!-- priors and availables main grid-->
     <div style="display: grid;
       grid-column: 1;
-
       grid-row: 1;
+
       margin-top: 75px;
       margin-left: 35px;
       grid-template-columns: 300px 500px;
@@ -203,42 +203,79 @@ font-size: 15px;
       <!-- priors -->
       <div style="grid-column: 1;
        justify-self: stretch;
-  height: 50px;
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2.78;
-  letter-spacing: 0.23px;
-  color: #465b6b;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.78;
+        letter-spacing: 0.23px;
+        color: #465b6b;
       ">
         <label> Patient Priors ({{NumberOfPriors}})</label>
         <mat-divider style="width: 280px;
         border-right-width: 1px;
         border-color:#7797ae;
-        margin-bottom: 5px;"></mat-divider>
+        "></mat-divider>
         <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="max-height: 500px;">
 
-          <div *ngFor="let priorProtocol of PatientPriorsList" style="
-          display: grid;
-
-        width: 28px;
-        height: 100px;
+          <mat-radio-group aria-label="Select an option">
+            <div *ngFor="let priorProtocol of PatientPriorsList" style="
+            width: 28px;
+            height: 100px;
+            margin-top: 10px;
         ">
+              <mat-radio-button labelPosition="before" color="primary" [value]="priorProtocol.studyName" style="
+                      width: 280px;
+                      margin-bottom:10px ;
+              ">
+                <!-- prior exam details -->
+                <div style="
+                                                        display: grid;
+                                                        grid-template-rows: 20px auto ;
+                                                        width: 245px;
+                                                        height: 110px;
 
-            {{priorProtocol.studyName}}
-            <mat-divider style="width: 280px;
+                  ">
+                  <!-- study name  -->
+                  <span style=" font-size: 16px;
+                    grid-row: 1;
+                    color: #465b6b;">{{priorProtocol.studyName}}</span>
+                  <!-- study details -->
+                  <div style="
+                   grid-row: 2;
+                   line-height:150%;
+                   width: 258px;
+                    height: 66px;
+                    font-size: 15px;
+                    margin-top: 15px;
+                    color: #7797ae;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    ">
+                    {{priorProtocol.studyDate | date}}<br>
+                    {{priorProtocol.studyDescription}}<br>
+                    Weight {{priorProtocol.weight}}  |  kVp {{priorProtocol.kVp}}
+
+                  </div>
+                </div>
+              </mat-radio-button>
+              <mat-divider style="width: 280px;
+            grid-row: 3;
+            margin-top: -15px;
+            grid-auto-flow: row;
         border-right-width: 1px;
         border-color:#7797ae;
-        margin-top: 5px;"></mat-divider>
-          </div>
-
+        "></mat-divider>
+            </div>
+          </mat-radio-group>
         </ng-scrollbar>
 
       </div>
 
       <!-- availables -->
-      <div class="availablesList" >
+      <div class="availablesList">
         <label> All available ({{NumberOfTemplates}}) </label>
         <mat-divider style="
         width: 500px;
@@ -246,7 +283,7 @@ font-size: 15px;
               border-color:#7797ae;
               margin-bottom: 5px;
               "></mat-divider>
-        <ng-scrollbar  #scrollable track="all" pointerEventsMethod="scrollbar" style="
+        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="
         max-width: 520px;
         max-height: 495px;
         width: 520px;">
@@ -276,9 +313,7 @@ font-size: 15px;
                 "></mat-divider>
           </div>
         </ng-scrollbar>
-
       </div>
-
     </div>
 
     <!-- preview panel -->
