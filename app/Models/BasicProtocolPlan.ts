@@ -1,3 +1,4 @@
+import { Guid } from "guid-typescript";
 export class BasicProtocolPlan {
 
 
@@ -10,9 +11,21 @@ export class BasicProtocolPlan {
     this._name = v;
   }
 
-  constructor() {
 
+
+  private _Id : Guid;
+  public get Id() : Guid {
+    return this._Id;
   }
+  public set Id(v : Guid) {
+    this._Id = v;
+  }
+
+
+
+constructor() {
+
+}
 
 
 }

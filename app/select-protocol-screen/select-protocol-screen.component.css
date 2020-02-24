@@ -19,6 +19,22 @@ ng-scrollbar {
   color: #465b6b;
 }
 
+.mat-radio-button:checked ~ label {
+  color: blue;
+}
 
+.availableProtocolLabel {
+  width: 430px;
+  height: 50px;
+  color: #465b6b;
+  font-size: 16px;
+  line-height: 3em;
 
- 
+}
+.mat-radio-button:checked+label {
+  width: 430px;
+  height: 50px;
+  font-weight: bold;
+  color: red;
+  font-size: 20px;
+}

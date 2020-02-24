@@ -8,7 +8,8 @@ import { DataServiceService } from '../DataService.service';
 import { BasicProtocolPlan } from '../Models/BasicProtocolPlan';
 import { ArchivedProtocol } from '../Models/ArchivedProtocol';
 import * as faker from 'faker';
-
+import { AnatomicalRegion } from '../Models/AnatomicalRegion.enum';
+import { Guid } from "guid-typescript";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class SelectProtocolScreenComponent implements OnInit {
   NumberOfTemplates: number = 10; // TODO: these gonna come from  the service
   NumberOfPriors: number = 10;
   SelectedPatient: PatientModalityTableEntry;
-  ProtocolTemplatesList: BasicProtocolPlan[];
+  ProtocolTemplatesList: [string, BasicProtocolPlan[]][]; // tupples  array for protocol drodown
   PatientPriorsList: ArchivedProtocol[];
 
   constructor(private router: Router, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataServiceService) {
@@ -46,32 +47,51 @@ export class SelectProtocolScreenComponent implements OnInit {
 
     this.dataService.currentMessage.subscribe(message => this.processMessage(message));
 
-    this.ProtocolTemplatesList = [];
+
     this.PatientPriorsList = [];
+    let basicPlansPerRegion = [];
+    this.ProtocolTemplatesList = [];
     for (let index = 0; index < 10; index++) {
-
-
-      let newPlan = new BasicProtocolPlan();
-      newPlan.name = faker.hacker.noun();
-      this.ProtocolTemplatesList.push(
-        newPlan
-      );
 
       let newPrior = new ArchivedProtocol();
       newPrior.studyName = faker.hacker.noun();
       newPrior.kvp = faker.random.number();
       newPrior.studyDate = faker.date.past(faker.random.number(4));
       newPrior.weight = faker.random.number(100);
-      newPrior.studyDescription =faker.hacker.phrase();
+      newPrior.studyDescription = faker.hacker.phrase();
       this.PatientPriorsList.push(newPrior);
 
+    }
+    for (let region in AnatomicalRegion) {
+
+      let newPlan = new BasicProtocolPlan();
+      newPlan.name = faker.hacker.noun();
+      newPlan.Id = Guid.create();
+      basicPlansPerRegion.push(newPlan);
+      let templateTuple: [string, BasicProtocolPlan[]] = [region, basicPlansPerRegion];
+      this.ProtocolTemplatesList.push(templateTuple);
 
     }
-    console.log(this.PatientPriorsList);
+
+
+
+
+
+
+    console.log(this.ProtocolTemplatesList);
 
   }
   processMessage(message: string): void {
 
+  }
+
+  randomEnum<T>(anEnum: T): T[keyof T] {
+    const enumValues = Object.keys(anEnum)
+      .map(n => Number.parseInt(n))
+      .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
+    const randomIndex = Math.floor(Math.random() * enumValues.length)
+    const randomEnumValue = enumValues[randomIndex]
+    return randomEnumValue;
   }
 
 }

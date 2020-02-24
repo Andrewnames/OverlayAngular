@@ -11,16 +11,13 @@ export class ArchivedProtocol {
   }
 
 
-  private _studyDescription : string;
-  public get studyDescription() : string {
+  private _studyDescription: string;
+  public get studyDescription(): string {
     return this._studyDescription;
   }
-  public set studyDescription(v : string) {
+  public set studyDescription(v: string) {
     this._studyDescription = v;
   }
-
-
-
 
   private _studyDate: Date;
   public get studyDate(): Date {
@@ -31,20 +28,20 @@ export class ArchivedProtocol {
   }
 
 
-  private _weight : number;
-  public get weight() : number {
+  private _weight: number;
+  public get weight(): number {
     return this._weight;
   }
-  public set weight(v : number) {
+  public set weight(v: number) {
     this._weight = v;
   }
 
 
-  private _kvp : number;
-  public get kvp() : number {
+  private _kvp: number;
+  public get kvp(): number {
     return this._kvp;
   }
-  public set kvp(v : number) {
+  public set kvp(v: number) {
     this._kvp = v;
   }
 

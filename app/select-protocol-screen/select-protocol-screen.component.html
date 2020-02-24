@@ -192,16 +192,17 @@ font-size: 15px;
 
 
     <!-- priors and availables main grid-->
-    <div style="display: grid;
-      grid-column: 1;
-      grid-row: 1;
+    <mat-radio-group aria-label="Select an option" style=" grid-column: 1;
+    grid-row: 1;">
+      <div style="display: grid;
+
 
       margin-top: 75px;
       margin-left: 35px;
       grid-template-columns: 300px 500px;
       ">
-      <!-- priors -->
-      <div style="grid-column: 1;
+        <!-- priors -->
+        <div style="grid-column: 1;
        justify-self: stretch;
         height: 50px;
         font-size: 18px;
@@ -212,14 +213,14 @@ font-size: 15px;
         letter-spacing: 0.23px;
         color: #465b6b;
       ">
-        <label> Patient Priors ({{NumberOfPriors}})</label>
-        <mat-divider style="width: 280px;
+          <label> Patient Priors ({{NumberOfPriors}})</label>
+          <mat-divider style="width: 280px;
         border-right-width: 1px;
         border-color:#7797ae;
         "></mat-divider>
-        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="max-height: 500px;">
+          <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="max-height: 500px;">
 
-          <mat-radio-group aria-label="Select an option">
+
             <div *ngFor="let priorProtocol of PatientPriorsList" style="
             width: 28px;
             height: 100px;
@@ -256,7 +257,7 @@ font-size: 15px;
                     ">
                     {{priorProtocol.studyDate | date}}<br>
                     {{priorProtocol.studyDescription}}<br>
-                    Weight {{priorProtocol.weight}}  |  kVp {{priorProtocol.kVp}}
+                    Weight {{priorProtocol.weight}} | kVp {{priorProtocol.kVp}}
 
                   </div>
                 </div>
@@ -269,28 +270,29 @@ font-size: 15px;
         border-color:#7797ae;
         "></mat-divider>
             </div>
-          </mat-radio-group>
-        </ng-scrollbar>
 
-      </div>
+          </ng-scrollbar>
 
-      <!-- availables -->
-      <div class="availablesList">
-        <label> All available ({{NumberOfTemplates}}) </label>
-        <mat-divider style="
+        </div>
+
+        <!-- availables -->
+        <div class="availablesList">
+          <label> All available ({{NumberOfTemplates}}) </label>
+          <mat-divider style="
         width: 500px;
               border-right-width: 1px;
               border-color:#7797ae;
               margin-bottom: 5px;
               "></mat-divider>
-        <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="
+          <ng-scrollbar #scrollable track="all" pointerEventsMethod="scrollbar" style="
         max-width: 520px;
         max-height: 495px;
         width: 520px;">
-          <div *ngFor="let protocol of ProtocolTemplatesList">
-            <mat-expansion-panel class="mat-elevation-z0" style="width:500px">
-              <mat-expansion-panel-header [collapsedHeight]="'60px'" style=" height: auto; ">
-                <mat-panel-title style="width: 179px;
+
+            <div *ngFor="let protocol of ProtocolTemplatesList">
+              <mat-expansion-panel class="mat-elevation-z0" style="width:500px">
+                <mat-expansion-panel-header [collapsedHeight]="'60px'" style=" height: auto; ">
+                  <mat-panel-title style="width: 179px;
               height: 50px;
               font-size: 22px;
               font-weight: 500;
@@ -299,23 +301,31 @@ font-size: 15px;
               line-height: 2.27;
               letter-spacing: 0.28px;
               color: #7797ae;">
-                  {{protocol.name}}
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              body
+                    {{protocol[0]}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-radio-button *ngFor="let regionTemplate of protocol[1]" labelPosition="before" color="primary"
+                  [value]="regionTemplate.Id"
 
-            </mat-expansion-panel>
-            <mat-divider style="
-          width: 500px;
+                  style="
+                      width: 280px;">
+                  <div class="availableProtocolLabel">
+                    <span>{{regionTemplate.name}}</span>
+                  </div>
+                </mat-radio-button>
+              </mat-expansion-panel>
+              <mat-divider style="
+                width: 500px;
                 border-right-width: 1px;
                 border-color:#7797ae;
                 margin-top: 5px;
                 "></mat-divider>
-          </div>
-        </ng-scrollbar>
-      </div>
-    </div>
+            </div>
 
+          </ng-scrollbar>
+        </div>
+      </div>
+    </mat-radio-group>
     <!-- preview panel -->
     <div style="grid-column: 2;
       background-color:
