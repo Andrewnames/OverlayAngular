@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PatientModalityTableEntry } from '../Models/PatientModalityTableEntry';
@@ -10,13 +9,39 @@ import { ArchivedProtocol } from '../Models/ArchivedProtocol';
 import * as faker from 'faker';
 import { AnatomicalRegion } from '../Models/AnatomicalRegion.enum';
 import { Guid } from "guid-typescript";
-
+import { MatRadioChange } from '@angular/material/radio';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-select-protocol-screen',
   templateUrl: './select-protocol-screen.component.html',
-  styleUrls: ['./select-protocol-screen.component.css']
+  styleUrls: ['./select-protocol-screen.component.css'],
+  animations: [
+    // the fade-in/fade-out animation.
+    trigger('simpleFadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({ opacity: 1 })),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate(600)
+      ]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(400, style({ opacity: 0 })))
+    ])
+  ]
 })
+
 export class SelectProtocolScreenComponent implements OnInit {
 
 
@@ -34,6 +59,18 @@ export class SelectProtocolScreenComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'alert-icon',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/alert.svg'));
+    iconRegistry.addSvgIcon(
+      'exclamationWhite-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/whiteExclamationCircle.svg'));
+    iconRegistry.addSvgIcon(
+      'contrast-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/contrastIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'saline-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/salineIcon.svg'));
+
+
+
 
 
     const navigaion = this.router.getCurrentNavigation();
@@ -59,9 +96,11 @@ export class SelectProtocolScreenComponent implements OnInit {
       newPrior.studyDate = faker.date.past(faker.random.number(4));
       newPrior.weight = faker.random.number(100);
       newPrior.studyDescription = faker.hacker.phrase();
+      newPrior.id = Guid.create();
       this.PatientPriorsList.push(newPrior);
 
     }
+
     for (let region in AnatomicalRegion) {
 
       let newPlan = new BasicProtocolPlan();
@@ -72,16 +111,15 @@ export class SelectProtocolScreenComponent implements OnInit {
       this.ProtocolTemplatesList.push(templateTuple);
 
     }
-
-
-
-
-
-
     console.log(this.ProtocolTemplatesList);
-
   }
   processMessage(message: string): void {
+
+  }
+
+  planSelected(planselectedChange: MatRadioChange) {
+    let planGuid = planselectedChange.source.value;
+    console.log('selected plan guid ' + planGuid);
 
   }
 

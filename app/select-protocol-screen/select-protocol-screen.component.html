@@ -2,8 +2,9 @@
 
 ">
   <!-- panel info header -->
-  <mat-expansion-panel class="mat-elevation-z6">
-    <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1316px; height: auto; ">
+  <mat-expansion-panel class="mat-elevation-z6" style="position: relative;
+  z-index: 2;">
+    <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1322px; height: auto; ">
       <mat-panel-title style="height: 65px;
       ">
         <mat-icon svgIcon="patient-icon" style="margin-top: 10px ;
@@ -166,7 +167,7 @@ font-size: 15px;
 
     </div>
   </mat-expansion-panel>
-
+<!-- main grid -->
   <div style="
   display: grid;
   height: 630px;
@@ -192,7 +193,7 @@ font-size: 15px;
 
 
     <!-- priors and availables main grid-->
-    <mat-radio-group aria-label="Select an option" style=" grid-column: 1;
+    <mat-radio-group aria-label="Select an option" (change)="planSelected($event)" style=" grid-column: 1;
     grid-row: 1;">
       <div style="display: grid;
 
@@ -226,7 +227,7 @@ font-size: 15px;
             height: 100px;
             margin-top: 10px;
         ">
-              <mat-radio-button labelPosition="before" color="primary" [value]="priorProtocol.studyName" style="
+              <mat-radio-button labelPosition="before" color="primary" [value]="priorProtocol.id" style="
                       width: 280px;
                       margin-bottom:10px ;
               ">
@@ -305,9 +306,7 @@ font-size: 15px;
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-radio-button *ngFor="let regionTemplate of protocol[1]" labelPosition="before" color="primary"
-                  [value]="regionTemplate.Id"
-
-                  style="
+                  [value]="regionTemplate.Id" style="
                       width: 280px;">
                   <div class="availableProtocolLabel">
                     <span>{{regionTemplate.name}}</span>
@@ -326,12 +325,132 @@ font-size: 15px;
         </div>
       </div>
     </mat-radio-group>
+
+
+
     <!-- preview panel -->
     <div style="grid-column: 2;
-      background-color:
-      #eceff4;
-      z-index: -1;
-      "> </div>
+      background-color:#eceff4;
+      display: grid;
+      height: 630px;
+      grid-template-rows: 80px 30px 120px 60px 300px 200px ;
+      z-index: 1;
+      ">
+      <!-- info icon -->
+      <div style="width: 53px;
+      justify-self: end;
+      margin-top: 15px;
+                  grid-row:1;
+                  height: 44px;
+                  border-radius: 22px 0 0 22px;
+                  box-shadow: 0 0 9px 2px rgba(104, 147, 178, 0.25);
+                  background-color: #465b6b;">
+        <mat-icon svgIcon="exclamationWhite-icon" style="
+                  margin-top: 10px;
+    margin-left: 10px;"></mat-icon>
+      </div>
+      <!-- select action label -->
+      <span style="
+      text-align: center;
+      grid-row:2;
+      height: 26px;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.73;
+      letter-spacing: -0.01px;
+      text-align: center;
+      color: #41505b;">Select protocol to view preview</span>
+      <!-- totals cards -->
+      <div style="display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 10px;
+       grid-row: 3;
+       margin: 20px;">
+        <!-- total contrast -->
+        <mat-card
+        [@simpleFadeAnimation]="'in'"
+        class="mat-elevation-z5"
+        style="grid-column:1;
+        width: 100px;
+        height: 115px;
+        border-radius: 4px;
+        background-color: white;">
+          <div style="
+          margin: 20px 10px 20px 15px ;
+          text-align: left;
+          font-size: 18px;
+          font-weight: bold;
+          opacity: 0.8;
+          color: #465B6B;">Total Contrast</div>
+          <div style="
+          display: grid; grid-template-columns: auto auto;">
+            <mat-icon svgIcon="contrast-icon" style="
+            grid-column: 1;
+           "></mat-icon>
+           <div style="font-size: 22px;
+           font-weight: normal;
+           color: #41505b;">— — — </div>
+          </div>
+        </mat-card>
+        <!-- total saline -->
+        <mat-card
+        [@simpleFadeAnimation]="'in'"
+        class="mat-elevation-z5"
+        style="grid-column:2;
+        width: 100px;
+        height: 115px;
+        border-radius: 4px;
+        background-color: white;">
+          <div style="
+          margin: 20px 10px 20px 15px ;
+          text-align: left;
+          font-size: 18px;
+          font-weight: bold;
+          opacity: 0.8;
+          color: #465B6B;">Total Saline</div>
+          <div style="
+          display: grid; grid-template-columns: auto auto;">
+            <mat-icon svgIcon="saline-icon" style="
+            grid-column: 1;
+           "></mat-icon>
+           <div style="font-size: 22px;
+           font-weight: normal;
+           color: #41505b;">— — — </div>
+          </div>
+        </mat-card>
+          <!-- total duration -->
+          <mat-card
+          [@simpleFadeAnimation]="'in'"
+          class="mat-elevation-z5"
+          style="grid-column:3;
+          width: 100px;
+          height: 115px;
+          border-radius: 4px;
+          background-color: white;">
+            <div style="
+            margin: 20px 10px 20px 15px ;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0.8;
+            color: #465B6B;">Total Saline</div>
+            <div style="
+            display: grid; grid-template-columns: auto auto;">
+              <mat-icon svgIcon="saline-icon" style="
+              grid-column: 1;
+             "></mat-icon>
+             <div style="font-size: 22px;
+             font-weight: normal;
+             color: #41505b;">— — — </div>
+            </div>
+          </mat-card>
+      </div>
+    </div>
+
+
+
   </div>
 
 

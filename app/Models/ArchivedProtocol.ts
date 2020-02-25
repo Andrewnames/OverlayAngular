@@ -1,5 +1,15 @@
+import { Guid } from "guid-typescript";
 export class ArchivedProtocol {
 
+
+
+  private _id: Guid;
+  public get id(): Guid {
+    return this._id;
+  }
+  public set id(v: Guid) {
+    this._id = v;
+  }
 
 
   private _studyName: string;

@@ -7,6 +7,7 @@ import { StartupScreenComponent } from './StartupScreen/startup-screen/startup-s
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button'; // material design imports
+import {MatCardModule} from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
@@ -48,6 +49,7 @@ import { AppRouting } from './app-routing.module';
     MatCheckboxModule,
     MatTabsModule,
     MatIconModule,
+    MatCardModule,
     MatDividerModule,
     MatFormFieldModule,
     MatTableModule,
