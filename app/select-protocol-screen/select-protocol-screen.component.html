@@ -2,7 +2,9 @@
 
 ">
   <!-- panel info header -->
-  <mat-expansion-panel class="mat-elevation-z6" style="position: relative;
+  <mat-expansion-panel class="mat-elevation-z6"
+
+  style="position: relative;
   z-index: 2;">
     <mat-expansion-panel-header [collapsedHeight]="'70px'" style=" width: 1322px; height: auto; ">
       <mat-panel-title style="height: 65px;
@@ -18,15 +20,6 @@
           {{SelectedPatient.PatientGender}} |
           {{SelectedPatient.PatientAge}} years
         </p>
-
-
-
-
-
-
-
-
-
 
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -167,16 +160,12 @@ font-size: 15px;
 
     </div>
   </mat-expansion-panel>
-<!-- main grid -->
+  <!-- main grid -->
   <div style="
   display: grid;
   height: 630px;
-
-  grid-template-columns: 950px 420px;
+  grid-template-columns: 925px 441px;
   ">
-
-
-
     <!-- select protocol label -->
 
     <label style="width: 547px;
@@ -333,7 +322,7 @@ font-size: 15px;
       background-color:#eceff4;
       display: grid;
       height: 630px;
-      grid-template-rows: 80px 30px 120px 60px 300px 200px ;
+      grid-template-rows: 50px 20px 170px 60px 300px 200px;
       z-index: 1;
       ">
       <!-- info icon -->
@@ -369,12 +358,9 @@ font-size: 15px;
        grid-row: 3;
        margin: 20px;">
         <!-- total contrast -->
-        <mat-card
-        [@simpleFadeAnimation]="'in'"
-        class="mat-elevation-z5"
-        style="grid-column:1;
-        width: 100px;
-        height: 115px;
+        <mat-card [@simpleFadeAnimation]="'in'" class="mat-elevation-z5" style="grid-column:1;
+        width: 90px;
+        height: 100px;
         border-radius: 4px;
         background-color: white;">
           <div style="
@@ -389,18 +375,15 @@ font-size: 15px;
             <mat-icon svgIcon="contrast-icon" style="
             grid-column: 1;
            "></mat-icon>
-           <div style="font-size: 22px;
+            <div style="font-size: 22px;
            font-weight: normal;
            color: #41505b;">— — — </div>
           </div>
         </mat-card>
         <!-- total saline -->
-        <mat-card
-        [@simpleFadeAnimation]="'in'"
-        class="mat-elevation-z5"
-        style="grid-column:2;
-        width: 100px;
-        height: 115px;
+        <mat-card [@simpleFadeAnimation]="'in'" class="mat-elevation-z5" style="grid-column:2;
+        width: 90px;
+        height: 100px;
         border-radius: 4px;
         background-color: white;">
           <div style="
@@ -415,38 +398,89 @@ font-size: 15px;
             <mat-icon svgIcon="saline-icon" style="
             grid-column: 1;
            "></mat-icon>
-           <div style="font-size: 22px;
+            <div style="font-size: 22px;
            font-weight: normal;
            color: #41505b;">— — — </div>
           </div>
         </mat-card>
-          <!-- total duration -->
-          <mat-card
-          [@simpleFadeAnimation]="'in'"
-          class="mat-elevation-z5"
-          style="grid-column:3;
-          width: 100px;
-          height: 115px;
+        <!-- total duration -->
+        <mat-card [@simpleFadeAnimation]="'in'" class="mat-elevation-z5" style="grid-column:3;
+          width: 90px;
+          height: 100px;
           border-radius: 4px;
           background-color: white;">
-            <div style="
+          <div style="
             margin: 20px 10px 20px 15px ;
             text-align: left;
             font-size: 18px;
             font-weight: bold;
             opacity: 0.8;
-            color: #465B6B;">Total Saline</div>
-            <div style="
+            color: #465B6B;">Total Duration</div>
+          <div style="
             display: grid; grid-template-columns: auto auto;">
-              <mat-icon svgIcon="saline-icon" style="
-              grid-column: 1;
-             "></mat-icon>
-             <div style="font-size: 22px;
+
+            <mat-icon style="
+             grid-column: 1;
+            ">access_time</mat-icon>
+            <div style="font-size: 22px;
              font-weight: normal;
              color: #41505b;">— — — </div>
-            </div>
-          </mat-card>
+          </div>
+        </mat-card>
       </div>
+
+      <!-- pressure picker -->
+
+
+      <mat-form-field class="mat-elevation-z5" style="border-radius: 4px; background-color: white;
+      grid-row: 4;
+      padding: 5px;
+      justify-self: center;
+      height: 60px;
+      max-height: 500px;
+      width: 400px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #41505b;
+      "
+      [@slideInDown]="slideInDown"
+      >
+        <mat-label style="width: 150px;
+         margin-left: 10px;
+         margin-top: 10px;
+        height: 24px;
+        opacity: 0.8;
+        font-size: 20px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0px;
+        color: #465b6b;">Pressure Limit ({{PressureUnit}})</mat-label>
+        <mat-select style="max-height: 700px; margin-left: 10px; width: 373px;  ">
+
+          <mat-option *ngFor="let limitValue of PressureLimits" [value]="limitValue" style="
+font-weight: bold;
+text-align: center;
+margin-top: 5px;
+margin-bottom: 5px;
+margin-left: 12px;
+font-size: 15px;
+width: 380px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.6;
+  letter-spacing: -0.02px;
+  text-align: center;
+  color: #41505b;
+border-radius: 4px;
+background-color: #b9c7d233;">
+            {{limitValue}}
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+
     </div>
 
 

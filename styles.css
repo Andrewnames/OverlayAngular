@@ -18,3 +18,8 @@ body { margin: 0;
 
 
 }
+
+
+.mat-select-panel{
+  max-height: 500px !important;
+}

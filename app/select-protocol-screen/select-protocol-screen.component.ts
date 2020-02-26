@@ -8,45 +8,40 @@ import { BasicProtocolPlan } from '../Models/BasicProtocolPlan';
 import { ArchivedProtocol } from '../Models/ArchivedProtocol';
 import * as faker from 'faker';
 import { AnatomicalRegion } from '../Models/AnatomicalRegion.enum';
-import { Guid } from "guid-typescript";
+import { Guid } from 'guid-typescript';
 import { MatRadioChange } from '@angular/material/radio';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { fadeAnimation } from '../animations';
+import { slideInDown } from 'ng-animate';
+import { slideInUp } from 'ng-animate';
+
+
 
 @Component({
   selector: 'app-select-protocol-screen',
   templateUrl: './select-protocol-screen.component.html',
   styleUrls: ['./select-protocol-screen.component.css'],
-  animations: [
-    // the fade-in/fade-out animation.
-    trigger('simpleFadeAnimation', [
-
-      // the "in" style determines the "resting" state of the element when it is visible.
-      state('in', style({ opacity: 1 })),
-
-      // fade in when created. this could also be written as transition('void => *')
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate(600)
-      ]),
-
-      // fade out when destroyed. this could also be written as transition('void => *')
-      transition(':leave',
-        animate(400, style({ opacity: 0 })))
-    ])
+  animations: [fadeAnimation, trigger('slideInDown', [transition('* => *', useAnimation(slideInDown, {
+    params: { timing: 0.1, delay: 0 }
+  }))]),
+    trigger('slideInUp', [transition('* => *', useAnimation(slideInUp, {
+      params: { timing: 0.1, delay: 0 }
+    }))]),
   ]
 })
 
 export class SelectProtocolScreenComponent implements OnInit {
 
-
-  NumberOfTemplates: number = 10; // TODO: these gonna come from  the service
+  slideInDown: any;
+  NumberOfTemplates: number = 0; // TODO: these gonna come from  the service
   NumberOfPriors: number = 10;
+  PressureUnit: string = 'PSI';
+  PressureLimits: number[] = [100,
+    150,
+    200,
+    225,
+    250,
+    300];
   SelectedPatient: PatientModalityTableEntry;
   ProtocolTemplatesList: [string, BasicProtocolPlan[]][]; // tupples  array for protocol drodown
   PatientPriorsList: ArchivedProtocol[];
@@ -107,6 +102,7 @@ export class SelectProtocolScreenComponent implements OnInit {
       newPlan.name = faker.hacker.noun();
       newPlan.Id = Guid.create();
       basicPlansPerRegion.push(newPlan);
+      this.NumberOfTemplates += basicPlansPerRegion.length;
       let templateTuple: [string, BasicProtocolPlan[]] = [region, basicPlansPerRegion];
       this.ProtocolTemplatesList.push(templateTuple);
 

@@ -19,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
+import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { ModalityScreenComponent } from './modality-screen/modality-screen.component';
@@ -47,6 +47,7 @@ import { AppRouting } from './app-routing.module';
     MatButtonToggleModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatSelectModule,
     MatTabsModule,
     MatIconModule,
     MatCardModule,
